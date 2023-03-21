@@ -59,6 +59,11 @@ class PostController extends Controller
     }
     public static function user()
     {
+        if(! request('paginate')){
+            $amount = 20;
+        }else{
+            $amount = request('paginate');
+        }
         $id = \auth()->id();
         $user = User::find($id);
         $post = Post::where('user_id', $id);
@@ -70,7 +75,7 @@ class PostController extends Controller
         return view('user', [
             'name' => $name,
             'user' => $user,
-            'post' => $post->latest()->paginate(5)
+            'post' => $post->latest()->where('approved','=', true)->paginate($amount)
         ]);
     }
 

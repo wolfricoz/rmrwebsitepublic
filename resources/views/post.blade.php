@@ -45,8 +45,8 @@
 {{--</x-layout>--}}
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="text-xl text-gray-800 dark:text-gray-200 leading-tight text-center">
-            {!! clean($post->title->toTrixHtml()) !!} <br><a class="text-sm" href="../user/{{ $post->author }}">Author: {{ $post->author }}</a>
+        <h2 class="text-xl text-gray-800 dark:text-gray-200 leading-tight text-center pb-0.5">
+            {!! clean($post->title->toTrixHtml()) !!} <p><a class="text-sm" href="../user/{{ $post->author }}">{{ $post->author }}</a></p>
         </h2>
     </x-slot>
 

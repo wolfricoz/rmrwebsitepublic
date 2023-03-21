@@ -23,4 +23,11 @@ class admincontroller extends Controller
             'post' => $post,
         ]);
     }
+    public static function approve(){
+        $id = \request()->validate([
+           'id'=>'required'
+        ]);
+        $post = Post::where('id', $id)->update(['approved' => true]);
+        return redirect('admin');
+    }
 }
