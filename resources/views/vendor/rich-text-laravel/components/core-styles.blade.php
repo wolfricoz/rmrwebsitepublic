@@ -1,7 +1,7 @@
 <style {{ $attributes }}>
 @charset "UTF-8";
 /*
-Trix 1.3.1
+Trix 1.3.1a
 Copyright © 2020 Basecamp, LLC
 http://trix-editor.org/*/
 trix-editor {
