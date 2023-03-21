@@ -46,9 +46,11 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center">
-            {{ __('Frontpage') }}
+            {{ $name }}
+
         </h2>
     </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -56,7 +58,7 @@
                     @forelse($post as $p )
                         <div class=" mb-6 p-2 rounded-md"
                              style="border-color: #1a202c; border-width: 1px; border-style: solid;">
-                            <a href="post/{{ $p->id }}"><h3
+                            <a href="../post/{{ $p->id }}"><h3
                                     class="text-lg text-center hover:underline">{!!  clean($p->title->toTrixHtml()) !!}</h3></a>
                             <span class="text-sm text-gray-400">Posted by <a href="user/{{ $p->author }}"
                                                                              class="text-sm text-gray-300 hover:underline">{{$p->author}}</a></span>
@@ -103,7 +105,7 @@
                         <p>No posts in database</p>
                     @endforelse
                     <div class="text-white ">
-                        {{ $post->appends(request()->query())->links() }}
+                        {{ $post->links() }}
                     </div>
                 </div>
             </div>

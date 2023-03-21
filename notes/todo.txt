@@ -1,0 +1,6 @@
+https://www.youtube.com/watch?v=VX4-4iWnGIo&t=183s
+https://github.com/basecamp/trix
+https://github.com/tonysm/rich-text-laravel
+https://github.com/tonysm/globalid-laravel
+
+Fix create with trix.

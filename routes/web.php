@@ -16,16 +16,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/', [PostController::class, 'index'])->name('index');
+Route::post('/', [PostController::class, 'delete']);
 Route::get('/home', [PostController::class, 'index'])->name('home');
-Route::get('/posts/{post:id}', [PostController::class, 'find']);
-//Route::get('/', function (){
-//    return view('posts', [
-//       'post' => \App\Models\Post::all()
-//    ]);
-//});
-//Route::get('/dashboard', [PostController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
-
+Route::get('/post/{post:id}', [PostController::class, 'find']);
+Route::get('/user/{user:name}', [PostController::class, 'finduser'])->name('user');
+Route::get('admin', function (){
+//    return view('admin');
+    return "You have access";
+})->middleware('auth')->middleware('admin')->name('admin');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

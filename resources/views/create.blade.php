@@ -15,15 +15,16 @@
                         <label for="title">
                             title <br>
                         </label>
-                        <input class="" type="text" name="title" id="title" required><br>
+                        <x-trix-field id="title" name="title" class="min-h-full h-9 bg-gray-100"/>
                         <label for="body">
                             body<br>
                         </label><br>
-                        <textarea class="" name="body" id="body" required></textarea><br>
+
+                        <x-trix-field id="body" name="body" class="min-h-full h-48 bg-gray-100 block"/>
                         <label for="category">
                             category<br>
                         </label><br>
-                        <select name="category" id="category">
+                        <select name="category_id" id="category_id">
                             @foreach(\App\Models\category::all() as $cat)
                                 <option value="{{ $cat->id }}">{{ $cat->category }}</option>
                             @endforeach
