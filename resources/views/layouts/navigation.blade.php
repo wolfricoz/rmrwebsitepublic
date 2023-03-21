@@ -42,9 +42,13 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            <x-dropdown-link :href="route('profile.edit')">
+                            <x-dropdown-link :href="route('user')">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
+                            <x-dropdown-link :href="route('profile.edit')">
+                                {{ __('account settings') }}
+                            </x-dropdown-link>
+
                             @auth()
                                 @if(auth()->user()->IsAdmin)
                                     <x-dropdown-link :href="route('admin')">

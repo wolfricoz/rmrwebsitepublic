@@ -22,7 +22,7 @@ class PostController extends Controller
             $amount = request('paginate');
         }
 //        Need to fix categories, broken still
-        $post = Post::latest()->withRichText('body')->filter(request(['search', 'category']))->paginate($amount);
+        $post = Post::latest()->withRichText('body')->filter(request(['search', 'category']))->where('approved', '=', true)->paginate($amount);
 
         return view('index', [
             'post' => $post,
@@ -47,6 +47,22 @@ class PostController extends Controller
     {
         $user = User::where('name', $name)->first();
         $post = Post::where('author', $name);
+//        $post = Post::find($name);
+        if (!$user) {
+            throw new ModelNotFoundException();
+        }
+        return view('user', [
+            'name' => $name,
+            'user' => $user,
+            'post' => $post->latest()->paginate(5)
+        ]);
+    }
+    public static function user()
+    {
+        $id = \auth()->id();
+        $user = User::find($id);
+        $post = Post::where('user_id', $id);
+        $name = $user->name;
 //        $post = Post::find($name);
         if (!$user) {
             throw new ModelNotFoundException();
