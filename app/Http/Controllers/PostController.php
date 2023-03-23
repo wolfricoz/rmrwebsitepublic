@@ -22,7 +22,7 @@ class PostController extends Controller
             $amount = request('paginate');
         }
 //        Need to fix categories, broken still
-        $post = Post::latest()->withRichText('body')->filter(request(['search', 'category']))->where('approved', '=', true)->paginate($amount);
+        $post = Post::latest('updated_at')->withRichText('body')->filter(request(['search', 'category']))->where('approved', '=', true)->paginate($amount);
 
         return view('index', [
             'post' => $post,

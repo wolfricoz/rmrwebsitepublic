@@ -15,7 +15,7 @@
                                     class="text-lg text-center hover:underline">{!!  clean($p->title->toTrixHtml()) !!}</h3></a>
                             <span class="text-sm text-gray-400">Posted by <a href="user/{{ $p->author }}"
                                                                              class="text-sm text-gray-300 hover:underline">{{$p->author}}</a></span>
-                            <p>{!! clean($p->body->toTrixHtml()) !!}</p>
+                            <p>{!! clean($p->body) !!}</p>
                             <div class="grid grid-cols-2">
                                 <div class="col-span-1">
                                     <p class="text-sm text-gray-400">
@@ -46,6 +46,8 @@
                     <div class="text-white ">
                         {{ $post->appends(request()->query())->links() }}
                     </div>
+
+
                 </div>
             </div>
         </div>

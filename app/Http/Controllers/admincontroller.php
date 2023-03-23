@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class admincontroller extends Controller
 {
     //
-    public static function index()
+    public static function dashboard()
     {
         if(! request('paginate')){
             $amount = 20;
@@ -19,7 +19,22 @@ class admincontroller extends Controller
 //        Need to fix categories, broken still
         $post = Post::latest()->withRichText('body')->filter(request(['search', 'category']))->where('approved', '=', false)->paginate($amount);
 
-        return view('admin', [
+        return view('admin.admin', [
+            'post' => $post,
+        ]);
+    }
+
+    public static function index()
+    {
+        if(! request('paginate')){
+            $amount = 20;
+        }else{
+            $amount = request('paginate');
+        }
+//        Need to fix categories, broken still
+        $post = Post::oldest()->withRichText('body')->filter(request(['search', 'category']))->where('approved', '=', false)->paginate($amount);
+
+        return view('admin.queue', [
             'post' => $post,
         ]);
     }
@@ -27,7 +42,7 @@ class admincontroller extends Controller
         $id = \request()->validate([
            'id'=>'required'
         ]);
-        $post = Post::where('id', $id)->update(['approved' => true]);
-        return redirect('admin');
+        $post = Post::where('id', $id)->update(['approved' => true, 'updated_at' => now()]);
+        return redirect('admin/queue');
     }
 }

@@ -23,8 +23,9 @@ Route::get('/home', [PostController::class, 'index'])->name('home');
 Route::get('/post/{post:id}', [PostController::class, 'find']);
 Route::get('/user/{user:name}', [PostController::class, 'finduser'])->name('user');
 Route::get('/user', [PostController::class, 'user'])->name('user');
-Route::get('admin', [admincontroller::class, 'index'])->middleware('auth')->middleware('admin')->name('admin');
-Route::post('admin', [admincontroller::class, 'approve'])->middleware('auth')->middleware('admin');
+Route::get('admin', [admincontroller::class, 'dashboard'])->middleware('auth')->middleware('admin')->name('admin');
+Route::get('admin/queue', [admincontroller::class, 'index'])->middleware('auth')->middleware('admin')->name('queue');
+Route::post('admin/queue', [admincontroller::class, 'approve'])->middleware('auth')->middleware('admin');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
