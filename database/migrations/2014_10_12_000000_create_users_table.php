@@ -24,9 +24,15 @@ return new class extends Migration
             $table->boolean('IsPatron')->default(false);
             $table->rememberToken();
             $table->timestamps();
+            $table->dateTime('last_login_at')->nullable();
+            $table->string('last_login_ip')->nullable();
+            $table->string('discord')->nullable();
+            $table->string('telegram')->nullable();
+            $table->string('flist')->nullable();
+            $table->string('Card')->nullable();
+            $table->string('other')->nullable();
         });
     }
-
     /**
      * Reverse the migrations.
      */

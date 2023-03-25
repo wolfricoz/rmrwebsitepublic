@@ -47,6 +47,32 @@
             @endif
         </div>
 
+
+        <div>
+            <x-input-label for="discord" :value="__('discord')" />
+            <x-text-input id="discord" name="discord" type="text" class="mt-1 block w-full" :value="old('discord', $user->discord)" required autofocus autocomplete="discord" />
+            <x-input-error class="mt-2" :messages="$errors->get('discord')" />
+        </div>
+        <div>
+            <x-input-label for="telegram" :value="__('Telegram')" />
+            <x-text-input id="telegram" name="telegram" type="text" class="mt-1 block w-full" :value="old('telegram', $user->telegram)" required autofocus autocomplete="telegram" />
+            <x-input-error class="mt-2" :messages="$errors->get('telegram')" />
+        </div>
+        <div>
+            <x-input-label for="flist" :value="__('F-List')" />
+            <x-text-input id="flist" name="flist" type="text" class="mt-1 block w-full" :value="old('flist', $user->flist)" required autofocus autocomplete="flist" />
+            <x-input-error class="mt-2" :messages="$errors->get('flist')" />
+        </div>
+        <div>
+            <x-input-label for="card" :value="__('card')" />
+            <x-text-input id="card" name="card" type="text" class="mt-1 block w-full" :value="old('card', $user->card)" required autofocus autocomplete="card" />
+            <x-input-error class="mt-2" :messages="$errors->get('card')" />
+        </div>
+        <div>
+            <x-input-label for="other" :value="__('other')" />
+            <x-text-input id="other" name="other" type="text" class="mt-1 block w-full" :value="old('other', $user->other)" required autofocus autocomplete="other" />
+            <x-input-error class="mt-2" :messages="$errors->get('other')" />
+        </div>
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 
