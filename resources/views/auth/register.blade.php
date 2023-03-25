@@ -8,6 +8,11 @@
             <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
+        <div>
+            <x-input-label for="dob" :value="__('dob')" />
+            <x-text-input id="dob" class="block mt-1 w-full" type="date" name="dob" :value="old('dob')" required autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('dob')" class="mt-2" />
+        </div>
 
         <!-- Email Address -->
         <div class="mt-4">

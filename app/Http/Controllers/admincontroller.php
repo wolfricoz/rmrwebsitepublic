@@ -45,4 +45,5 @@ class admincontroller extends Controller
         $post = Post::where('id', $id)->update(['approved' => true, 'updated_at' => now()]);
         return redirect('admin/queue');
     }
+
 }

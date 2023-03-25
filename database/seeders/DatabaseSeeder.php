@@ -31,6 +31,7 @@ class DatabaseSeeder extends Seeder
         $output->writeln('posts done');
         User::create([
            'name'=>'rico',
+            'dob'=>'1997-06-18',
             'email'=>'ricoisdenaam@gmail.com',
             'password'=>'$2y$10$CYZA4NAeUVk3iX2gUwimSu/xzItuA.8S/RezcP7pv8IaQG.6ehFz.',
             'IsAdmin'=>true

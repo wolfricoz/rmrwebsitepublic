@@ -21,6 +21,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'dob',
+        'IsAdmin',
+        'IsMod',
+        'IsPatron'
     ];
 
     /**
@@ -31,9 +35,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'IsAdmin',
-        'IsMod',
-        'IsPatron'
+
     ];
 
     /**
@@ -43,5 +45,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'IsPatron' => 'boolean',
+        'IsMod' => 'boolean',
+        'IsAdmin' => 'boolean',
     ];
 }

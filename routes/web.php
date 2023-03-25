@@ -3,6 +3,7 @@
 use App\Http\Controllers\admincontroller;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,8 @@ Route::get('/user', [PostController::class, 'user'])->name('user');
 Route::get('admin', [admincontroller::class, 'dashboard'])->middleware('auth')->middleware('admin')->name('admin');
 Route::get('admin/queue', [admincontroller::class, 'index'])->middleware('auth')->middleware('admin')->name('queue');
 Route::post('admin/queue', [admincontroller::class, 'approve'])->middleware('auth')->middleware('admin');
+Route::get('admin/users', [UserController::class, 'index'])->middleware('auth')->middleware('admin')->name('usermanagement');
+Route::post('admin/users', [UserController::class, 'update'])->middleware('auth')->middleware('admin');
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
