@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('flist')->nullable();
             $table->string('Card')->nullable();
             $table->string('other')->nullable();
+            $table->boolean('banned')->nullable();
         });
     }
     /**

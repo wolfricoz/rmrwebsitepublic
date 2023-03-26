@@ -47,6 +47,6 @@ class UserController extends Controller
         $user = User::find($data['id']);
         User::find($data['id'])
         ->update(['IsPatron' => $data['IsPatron'], 'IsMod' => $data['IsMod'], 'IsAdmin' => $data['IsAdmin']]);
-        return Redirect::back()->with('message', "$user->name has been updated");
+        return Redirect::back()->with('success', "$user->name has been successfully updated");
     }
 }

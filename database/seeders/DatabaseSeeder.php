@@ -23,11 +23,11 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $output = new ConsoleOutput();
-        User::factory(10)->create();
+        User::factory(100)->create();
         $output->writeln('users done');
-        category::factory(3)->create();
+        category::factory(10)->create();
         $output->writeln('categories done');
-        post::factory(100)->create();
+        post::factory(1000)->create();
         $output->writeln('posts done');
         User::create([
            'name'=>'rico',

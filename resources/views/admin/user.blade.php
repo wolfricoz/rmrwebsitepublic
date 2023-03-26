@@ -35,7 +35,4 @@
     {{ $user->links() }}
 
 </x-adminpage>
-@if(Session::has('message'))
-{{--  Add alpine JS to make this disappear, from: https://laracasts.com/series/laravel-8-from-scratch/episodes/48 --}}
-    <p  class="fixed bottom-0 right-0 bg-green-600 rounded-md p-1 m-1">{{Session::get('message')}}</p>
-@endif
+

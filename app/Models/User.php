@@ -27,6 +27,12 @@ class User extends Authenticatable
         'IsPatron',
         'last_login_at',
         'last_login_ip',
+        'discord',
+        'telegram',
+        'flist',
+        'card',
+        'other',
+        'status'
     ];
 
     /**
@@ -50,5 +56,6 @@ class User extends Authenticatable
         'IsPatron' => 'boolean',
         'IsMod' => 'boolean',
         'IsAdmin' => 'boolean',
+        'status'=> 'boolean'
     ];
 }

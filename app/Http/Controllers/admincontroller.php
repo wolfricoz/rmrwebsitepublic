@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class admincontroller extends Controller
 {
@@ -42,8 +43,8 @@ class admincontroller extends Controller
         $id = \request()->validate([
            'id'=>'required'
         ]);
-        $post = Post::where('id', $id)->update(['approved' => true, 'updated_at' => now()]);
-        return redirect('admin/queue');
+        Post::where('id', $id)->update(['approved' => true, 'updated_at' => now()]);
+        return Redirect::back()->with('success', "Post has been successfully approved");
     }
 
 }

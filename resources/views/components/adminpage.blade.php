@@ -13,6 +13,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"></script>
     <x-rich-text-trix-styles />
 
     <x-rich-text-trix-styles />
@@ -26,4 +27,7 @@
     <div class="m-auto mt-6 bg-gray-800 max-w-6xl p-3 text-gray-200 rounded-md">
         {{ $slot }}
     </div>
+<x-popup>
+
+</x-popup>
 </body>
