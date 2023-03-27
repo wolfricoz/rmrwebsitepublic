@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('excerpt');
             $table->text('body')->nullable();
             $table->boolean('approved')->default(false);
-            $table->integer('category_id');
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->string('category');
             $table->timestamps();
         });

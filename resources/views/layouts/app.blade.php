@@ -88,5 +88,8 @@
         {{ $slot }}
     </main>
 </div>
+<x-popup>
+
+</x-popup>
 </body>
 </html>

@@ -24,7 +24,7 @@
                         {{ $p->category}}
                     </p>
                 </div>
-                <form method="POST" name="delete">
+                <form method="POST" name="approve">
                     @csrf
 
                     <button name="id" value="{{ $p->id }}" class="">approve</button>

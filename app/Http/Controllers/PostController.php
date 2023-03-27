@@ -8,6 +8,7 @@ use App\Models\User;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Symfony\Component\Console\Output\ConsoleOutput;
 
@@ -100,7 +101,7 @@ class PostController extends Controller
         $attributes['excerpt'] = substr($attributes['body'], 0, 300);
 
         $post = Post::create($attributes);
-        return redirect("../post/{$post->id}");
+        return Redirect::route('index')->with('success', 'Your post has been successfully submitted to the moderation queue.');
     }
 
     public function delete(){
