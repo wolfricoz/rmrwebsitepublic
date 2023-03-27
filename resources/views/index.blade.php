@@ -110,3 +110,5 @@
         </div>
     </div>
 </x-app-layout>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4605197206330320"
+        crossorigin="anonymous"></script>
