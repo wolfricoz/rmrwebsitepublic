@@ -1,2 +1,2 @@
-    <img src="img/logo.png" {{ $attributes }} ></img>
+    <h1 {{ $attributes }} >Roleplay Meets</h1>
 

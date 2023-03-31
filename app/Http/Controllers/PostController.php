@@ -104,13 +104,14 @@ class PostController extends Controller
         return Redirect::route('index')->with('success', 'Your post has been successfully submitted to the moderation queue.');
     }
 
-    public function delete(){
-        $attributes = request()->validate([
-            'id' => 'required',
-            ]);
-        Post::find($attributes['id'])->delete();
-
-        return redirect('/');
+    public function destroy(Post $post){
+        $post->delete();
+        return redirect('/')->with('success', 'Post successfully removed');
     }
+    public function disapprove(){
+        Post::find(request('id'))->update(['approved'=>false]);
+        return redirect('/')->with('success', 'Post successfully added back to queue');
+    }
+
 
 }

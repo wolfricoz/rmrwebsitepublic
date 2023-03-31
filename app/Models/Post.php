@@ -22,7 +22,8 @@ class Post extends Model
         'excerpt',
         'category',
         'category_id',
-        'updated_at'
+        'updated_at',
+        'approved'
 
     ];
     protected $casts = [
