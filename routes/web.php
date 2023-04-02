@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [PostController::class, 'index'])->name('index');
 Route::post('/', [PostController::class, 'disapprove'])->name('post.disapprove');
+Route::get('rules', function (){
+    return view('rules');
+})->name('rules');
 Route::get('home', [PostController::class, 'index'])->name('home');
 Route::get('post/{post:id}', [PostController::class, 'find']);
 Route::delete('post/{post:id}', [PostController::class, 'destroy'])->name('post.destroy');

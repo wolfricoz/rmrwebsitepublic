@@ -19,6 +19,7 @@ class Post extends Model
         'title',
         'author',
         'body',
+        'bodysearch',
         'excerpt',
         'category',
         'category_id',
@@ -27,7 +28,6 @@ class Post extends Model
 
     ];
     protected $casts = [
-        'title'            => CleanHtml::class, // cleans both when getting and setting the value
         'body'    => CleanHtmlInput::class, // cleans when setting the value
     ];
 
@@ -36,7 +36,7 @@ class Post extends Model
     {
         $query->when($filters['search'] ?? false, function ($query, $search) {
             $query->where('title', 'like', '%' . $search . '%')
-                ->orwhere('body', 'like', '%' . $search . '%')
+                ->orwhere('bodysearch', 'like', '%' . $search . '%')
                 ->orwhere('author', 'like', '%' . $search . '%');
         });
         $query->when($filters['category'] ?? false, function ($query, $search) {
@@ -47,6 +47,5 @@ class Post extends Model
 
     protected $richTextFields = [
         'body',
-        'title'
     ];
 }

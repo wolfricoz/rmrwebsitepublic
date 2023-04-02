@@ -19,14 +19,17 @@ class PostFactory extends Factory
     public function definition(): array
     {
         $user = User::all()->random();
+        $body = $this->faker->paragraphs(5, true);
         return [
             'title' => $this->faker->sentence,
             'user_id' => $user->id,
             'author' => $user->name,
             'excerpt' => $this->faker->text(300),
-            'body' => $this->faker->paragraphs(5, true),
+            'body' => $body,
+            'bodysearch' => $body,
             'category_id' => category::all()->random()->id,
             'category' => category::all()->random()->category,
+            'approved'=>true
 
         ];
     }
