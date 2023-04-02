@@ -33,32 +33,40 @@
                                         {{ $p->category}}
                                     </p>
                                 </div>
-                                @auth()
-                                    @if(auth()->user()->IsAdmin or auth()->user()->IsMod)
-                                        <div
-                                            class="flex grid grid-cols-12 grid-rows-1 gap-4 bg-gray-700 min-w-max max-w-max mx-auto p-0 ">
-                                            <div class="col-span-1 col-start-1 row-start-1">
-                                                <p>mod tools</p>
-                                            </div>
-                                            <div class="col-span-1 col-start-2 row-start-1">
-                                                <form method="POST" name="delete" action="{{ route('post.destroy', $p) }}">
-                                                    @csrf
-                                                    @method('DELETE')
+                                <x-postdropdown align="left" class="w-32">
+                                    <x-slot name="trigger" class="border-1 border-white rounded-2xl ">
+                                        <button class=" hover:text-gray-400 focus:text-gray-400 transition duration-150 ease-in-out">
+                                            •••
+                                        </button>
+                                    </x-slot>
+                                    <x-slot name="content">
+                                        <x-postdropdown-link :href="route('getuser', $p->author)">
+                                            Profile
+                                        </x-postdropdown-link>
+                                        @auth()
+                                            @if(auth()->user()->IsAdmin or auth()->user()->IsMod)
+                                                <x-postdropdown-link class="text-red-800">
+                                                    <form method="POST" name="disapprove"
+                                                          action="{{ route('post.disapprove', $p) }}">
+                                                        @csrf
 
-                                                    <button name="id" value="{{ $p->id }}" class="">Delete</button>
-                                                </form>
-                                            </div>
-                                            <div class="col-span-1 col-start-3 row-start-1">
-                                                <form method="POST" name="disapprove" action="{{ route('post.disapprove', $p) }}">
-                                                    @csrf
+                                                        <button name="id" value="{{ $p->id }}" class="text-red-600">Disapprove</button>
+                                                    </form>
+                                                </x-postdropdown-link>
+                                                <x-postdropdown-link>
+                                                    <form method="POST" name="delete"
+                                                          action="{{ route('post.destroy', $p) }}">
+                                                        @csrf
+                                                        @method('DELETE')
 
-                                                    <button name="id" value="{{ $p->id }}" class="">queue</button>
-                                                </form>
-                                            </div>
+                                                        <button name="id" value="{{ $p->id }}" class="text-red-600">Delete</button>
+                                                    </form>
+                                                </x-postdropdown-link>
+                                            @endif
+                                        @endauth
+                                    </x-slot>
+                                </x-postdropdown>
 
-                                        </div>
-                                    @endif
-                                @endauth
 
                             </div>
                         </div>
