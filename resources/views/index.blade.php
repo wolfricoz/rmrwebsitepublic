@@ -30,8 +30,8 @@
                                         </span>
                                     </p></div>
                                 <div class="col-span-1"><p
-                                        class="text-right text-sm text-gray-400">
-                                        {{ $p->category}}
+                                        class="text-right text-sm text-gray-400 hover:text-gray-300 focus:text-gray-300">
+                                        <a href="{{ route('index', ['search'=>request('search'), 'category'=>$p->category, 'paginate'=>request('paginate')]) }}">{{ $p->category}}</a>
                                     </p>
                                 </div>
                                 @auth()

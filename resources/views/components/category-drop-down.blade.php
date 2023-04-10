@@ -4,7 +4,7 @@
         <select name="category" onchange="categoryform.submit();" class="inline-flex block border-blue-900 rounded-full bg-cyan-800 text-sm text-center p-1 w-36 mr-1 ml-1">
                 <option value="false">Categories</option>
             @forelse ($categories as $c)
-                @if($c->id == request('category'))
+                @if($c->category == request('category'))
                     <option value="{{$c->category}}" selected="selected"> {{ $c->category }} </option>
                 @else
                     <option value="{{$c->category}}"> {{ $c->category }} </option>

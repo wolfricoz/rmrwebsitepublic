@@ -46,6 +46,11 @@ class PostController extends Controller
 
     public static function finduser($name)
     {
+        if(! request('paginate')){
+            $amount = 20;
+        }else{
+            $amount = request('paginate');
+        }
         $user = User::where('name', $name)->first();
         $post = Post::where('author', $name);
 //        $post = Post::find($name);
@@ -55,7 +60,7 @@ class PostController extends Controller
         return view('user', [
             'name' => $name,
             'user' => $user,
-            'post' => $post->latest()->paginate(5)
+            'post' => $post->latest()->withRichText('body')->filter(request(['search', 'category']))->where('approved', '=', true)->paginate($amount)
         ]);
     }
     public static function user()
@@ -68,15 +73,15 @@ class PostController extends Controller
         $id = \auth()->id();
         $user = User::find($id);
         $post = Post::where('user_id', $id);
+
         $name = $user->name;
-//        $post = Post::find($name);
         if (!$user) {
             throw new ModelNotFoundException();
         }
         return view('user', [
             'name' => $name,
             'user' => $user,
-            'post' => $post->latest()->where('approved','=', true)->paginate($amount)
+            'post' => $post->latest()->withRichText('body')->filter(request(['search', 'category']))->where('approved', '=', true)->paginate($amount)
         ]);
     }
 
@@ -99,6 +104,7 @@ class PostController extends Controller
         $attributes['user_id'] = Auth::user()->id;
         $attributes['category'] = category::find($attributes['category_id'])->category;
         $attributes['excerpt'] = substr($attributes['body'], 0, 300);
+        $attributes['bodysearch'] = $attributes['body'];
 
         $post = Post::create($attributes);
         return Redirect::route('index')->with('success', 'Your post has been successfully submitted to the moderation queue.');

@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center" >
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center">
             {{ __('New Post') }}
         </h2>
     </x-slot>
@@ -12,29 +12,47 @@
                     <form method="POST" action="user/post" class="text-blue-500">
                         @csrf
                         <div>
-{{--                            <label for="title">--}}
-{{--                                title <br>--}}
-{{--                            </label>--}}
-                            <input type="title" name="title" placeholder="[a4a][platform] an eye catching title here.." value=""
+                            <label for="title">
+                                <h1 class="text-center">Title</h1>
+                            </label>
+                            <input type="title" name="title" placeholder="[a4a][platform] an eye catching title here.."
+                                   value="{{old('title')  }}"
                                    class="inline-flex block border-blue-900 rounded-md bg-cyan-800 text-sm p-1 pl-2 justify-center w-full text-white">
+                            <x-input-error :messages="$errors->get('title')" class="mt-2"/>
                         </div>
                         <div>
                             <label for="body">
-                                body<br>
+                                <h1 class="text-center">body</h1>
                             </label><br>
 
-                            <x-trix-field id="body" name="body" placeholder="Your post here" class="min-h-full h-48 bg-cyan-800 block"/>
+                            <x-trix-field id="body" name="body" placeholder="Your post here"
+                                          class="min-h-full h-48 bg-cyan-800 block" value="{!!   old('body') !!}"/>
+                            <x-input-error :messages="$errors->get('body')" class="mt-2"/>
                         </div>
-                        <div>
-                            <label for="category">
-                                category<br>
-                            </label><br>
-                            <select name="category_id" id="category_id">
-                                @foreach(\App\Models\category::all() as $cat)
-                                    <option value="{{ $cat->id }}">{{ $cat->category }}</option>
-                                @endforeach
+                        <div class="pt-4">
+                            <select class="inline-flex" name="category_id" id="category_id" required>
+
+
+                                @if(old('category_id'))
+                                    @foreach(\App\Models\category::all() as $cat)
+                                        @if(old('category_id') == $cat->id)
+                                            <option value="{{ $cat->id }}" selected>{{ $cat->category }}</option>
+
+                                        @else
+                                            <option value="{{ $cat->id }}">{{ $cat->category }}</option>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <option selected disabled>Categories</option>
+                                    @foreach(\App\Models\category::all() as $cat)
+                                        <option value="{{ $cat->id }}">{{ $cat->category }}</option>
+                                    @endforeach
+                                @endif
+
+
                             </select>
-                            <button type="submit">Submit</button>
+                            <button type="submit" class="text-right inline-flex right-0">Submit</button>
+                            <x-input-error :messages="$errors->get('category_id')" class="mt-2"/>
                         </div>
 
                     </form>
@@ -46,7 +64,7 @@
             <div class=" bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100 max-w-sm w-96">
                     <h1 class="font-bold text-center">
-                       Posting Guidelines
+                        Posting Guidelines
                     </h1>
                     <ol start="1" type="1" class="text-sm space-y-1 list-decimal">
                         <li class="list-item">

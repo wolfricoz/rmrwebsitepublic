@@ -31,7 +31,7 @@
                 {{ $header }}
             </div>
 
-            @if(request()->routeIs('index') or request()->routeIs('user'))
+            @if(request()->routeIs('index') or request()->routeIs('user') or request()->routeIs('getuser'))
 
 
             <div class="sm:px-6 lg:px-8 border-t border-gray-200 dark:border-gray-600">

@@ -25,7 +25,7 @@ Route::get('rules', function (){
     return view('rules');
 })->name('rules');
 Route::get('home', [PostController::class, 'index'])->name('home');
-Route::get('post/{post:id}', [PostController::class, 'find']);
+Route::get('post/{post:id}', [PostController::class, 'find'])->name('getpost');
 Route::delete('post/{post:id}', [PostController::class, 'destroy'])->name('post.destroy');
 Route::get('user/{user:name}', [PostController::class, 'finduser'])->name('getuser');
 Route::get('user', [PostController::class, 'user'])->name('user');

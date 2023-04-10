@@ -2,16 +2,15 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight text-center">
             {{ $name }}
-
+            <div></div>
         </h2>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-4">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     @forelse($post as $p )
-                        <div class=" mb-6 p-2 rounded-md"
+                        <div class=" mb-6 p-2 rounded-md bg-gray-800"
                              style="border-color: #1a202c; border-width: 1px; border-style: solid;">
                             <a href="../post/{{ $p->id }}"><h3
                                     class="text-lg text-center hover:underline">{!!  clean($p->title) !!}</h3></a>
@@ -32,7 +31,7 @@
                                     </p></div>
                                 <div class="col-span-1"><p
                                         class="text-right text-sm text-gray-400">
-                                        {{ $p->category}}
+                                        <a href="{{ route("getuser", ['search'=>request('search'), 'category'=>$p->category, 'paginate'=>request('paginate'), $p->author]) }}">{{ $p->category}}</a>
                                     </p>
                                 </div>
                                 @auth()
