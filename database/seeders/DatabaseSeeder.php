@@ -30,12 +30,13 @@ class DatabaseSeeder extends Seeder
         post::factory(1000)->create();
         $output->writeln('posts done');
         User::create([
-           'name'=>'rico',
+           'name'=>'admin',
             'dob'=>'1997-06-18',
-            'email'=>'ricoisdenaam@gmail.com',
-            'password'=>'$2y$10$CYZA4NAeUVk3iX2gUwimSu/xzItuA.8S/RezcP7pv8IaQG.6ehFz.',
+            'email'=>'admin@admin.com',
+            'password'=>'$2y$10$/0crM4s5NE1pQU3iKo1NbeCiKOu5Ey4fZgYKaSs3qR/muihI2qrtq',
             'IsAdmin'=>true
         ]);
+//        password is admin123
         $output->writeln('Ricos account done');
     }
 }
