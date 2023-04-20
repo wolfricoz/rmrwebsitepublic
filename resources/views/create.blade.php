@@ -68,13 +68,13 @@
                     </h1>
                     <ol start="1" type="1" class="text-sm space-y-1 list-decimal">
                         <li class="list-item">
-                            Think of your fellow users!
+                            Rule 1
                         </li>
                         <li>
-                            Don't be a cunt, really.
+                            Rule 2.
                         </li>
                         <li>
-                            No pedophiles, fuckin' Yikes dude.
+                            Rule 3.
                         </li>
 
                     </ol>
