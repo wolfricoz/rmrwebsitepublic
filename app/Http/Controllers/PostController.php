@@ -118,6 +118,26 @@ class PostController extends Controller
         Post::find(request('id'))->update(['approved'=>false]);
         return redirect('/')->with('success', 'Post successfully added back to queue');
     }
+    public function edit(Post $post){
+        return view('edit', [
+            'post'=> $post
+        ]);
+    }
+    public function update(Post $post){
+        $attributes = request()->validate([
+            'title' => 'required',
+            'body' => 'required',
+            'category_id' => ['required', Rule::exists('categories', 'id')]
+        ]);
+        clean($attributes['body']);
+        clean($attributes['title']);
+        $attributes['category'] = category::find($attributes['category_id'])->category;
+        $attributes['excerpt'] = substr($attributes['body'], 0, 300);
+        $attributes['bodysearch'] = $attributes['body'];
+        $attributes['approved'] = false;
+        $post->update($attributes);
+        return \redirect('/')->with('success', 'Post successfully edited, the post is pending approval');
+    }
 
 
 }

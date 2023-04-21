@@ -27,6 +27,8 @@ Route::get('rules', function (){
 Route::get('home', [PostController::class, 'index'])->name('home');
 Route::get('post/{post:id}', [PostController::class, 'find'])->name('getpost');
 Route::delete('post/{post:id}', [PostController::class, 'destroy'])->name('post.destroy');
+Route::get('edit/{post:id}', [PostController::class, 'edit'])->name('post.edit');
+Route::post('post/{post:id}', [PostController::class, 'update'])->name('post.update');
 Route::get('user/{user:name}', [PostController::class, 'finduser'])->name('getuser');
 Route::get('user', [PostController::class, 'user'])->name('user');
 Route::get('admin', [admincontroller::class, 'dashboard'])->middleware('auth')->middleware('admin')->name('admin');

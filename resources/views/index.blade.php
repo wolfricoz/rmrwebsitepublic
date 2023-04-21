@@ -48,7 +48,7 @@
                                                     Profile
                                                 </x-postdropdown-link>
                                                 @if($p->author == auth()->user()->name)
-                                                    <x-postdropdown-link :href="route('getuser', $p->author)">
+                                                    <x-postdropdown-link :href="route('post.edit', $p)">
                                                         Edit
                                                     </x-postdropdown-link>
                                                 @endif
